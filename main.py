@@ -4,6 +4,9 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.distributions import Categorical
 
+from model_rl import Policy
+from unityagents import UnityEnvironment
+
 import numpy as np
 from collections import deque
 
@@ -43,7 +46,7 @@ policy = Policy(state_size, action_size)
 # load the pre-trained weight file
 # policy.load_state_dict(torch.load('checkpoint_re.pth'))
 # policy.train()
-optimizer = optim.Adam(policy.parameters(), lr=lr)
+optimizer = optim.Adam(policy.parameters(), lr=args.lr)
 
 # epsilon (to avoid zero division)
 eps = np.finfo(np.float32).eps.item()
