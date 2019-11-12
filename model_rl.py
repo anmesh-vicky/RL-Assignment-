@@ -20,3 +20,4 @@ class Policy(nn.Module):
         x = F.relu(self.affine2(x))
         action_scores = self.affine3(x)
         return F.softmax(action_scores, dim=1)
+
